@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { CiMenuFries } from "react-icons/ci"; // assuming you are using this icon
+import { CiMenuFries } from "react-icons/ci"; 
 import { CgClose } from "react-icons/cg";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -34,7 +34,7 @@ const Navbar = () => {
       <nav className="bg-black w-full pt-3 h-[5rem]">
         <div className="flex justify-between h-[3rem] sm:px-0 px-3 sm:justify-around text-white items-center overflow-hidden py-3">
           <img
-            className="w-[50px] h-[50px]"
+            className="w-[100px] h-[50px]"
             src="/Assets/logo.png"
             alt="Logo"
           />
