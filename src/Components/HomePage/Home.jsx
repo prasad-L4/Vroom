@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Home = () => {
   const titleRef = useRef(null);
   const Blurref = useRef(null);
-
+  const testiRef = useRef(null);
   const hoverRef = useRef();
   const car = [
     {
@@ -40,6 +40,37 @@ const Home = () => {
       discount: "10% Discount",
     },
   ];
+  const testimonialdatas = [
+    {
+      img: "/Assets/images/pic-1.jpg",
+      name: "JOHN WICK",
+      trip: "5,722 Trips",
+      star: "⭐⭐⭐⭐⭐",
+      text: "Renting a luxury car from this service was the highlight of my trip! The car was in immaculate condition, and driving it felt like a dream. The staff provided top-notch service, making the whole experience unforgettable.",
+    },
+    {
+      img: "/Assets/images/pic-3.jpg",
+      name: "KATHERIN",
+      trip: "2,722 Trips",
+      star: "⭐⭐⭐⭐⭐",
+      text: "The comfort and features were outstanding. Plus, the pick-up and drop-off were seamless. Highly recommend for anyone seeking a premium experience",
+    },
+    {
+      img: "/Assets/images/pic-2.jpg",
+      name: "VINCENT",
+      trip: "3,322 Trips",
+      star: "⭐⭐⭐⭐",
+      text: "I rented a luxury sedan for a business trip, and it made quite an impression! The car was sleek, sophisticated, and drove like a dream. There was a slight delay during pick-up, but overall, I was very satisfied..",
+    },
+    {
+      img: "/Assets/images/pic-4.jpg",
+      name: "LAGARTHA",
+      trip: "1,573 Trips",
+      star: "⭐⭐⭐⭐⭐",
+      text: "The service I received was outstanding! The team was attentive and made sure I had everything I needed for my luxury rental. The car was beautiful and performed flawlessly. I’ll be returning for my next trip",
+    },
+  ];
+ 
   useLayoutEffect(() => {
     const onLoad = () => {
       gsap.from(titleRef.current, {
@@ -92,6 +123,35 @@ const Home = () => {
         end: "bottom 70%",
       },
     });
+
+    // testimonail;
+    const testiElements = document.querySelectorAll(".testimonial");
+
+    testiElements.forEach((testiElement) => {
+      const splitElement = testiElement.textContent.split("");
+      let clutter = "";
+
+      splitElement.forEach((char) => {
+        clutter += `<span style="display:inline-block">${char}</span>`; // Ensure spans are inline-block
+      });
+
+      testiElement.innerHTML = clutter;
+
+      // Animate each span element
+      gsap.from(testiElement.querySelectorAll("span"), {
+        y: 50, // Move the element 50px down and animate upward
+        opacity: 0,
+        duration: 0.5,
+        delay: 0.5,
+        stagger: 0.05, // Add a small delay between each span's animation
+        scrollTrigger: {
+          trigger: testiElement,
+          start: "top 80%",
+          end: "top 10%",
+          scrub: 1,
+        },
+      });
+    });
   }, []);
   useGSAP(() => {
     gsap.from(".banner-card", {
@@ -115,6 +175,7 @@ const Home = () => {
       },
     });
   });
+  // testimonail
 
   return (
     <>
@@ -216,6 +277,104 @@ const Home = () => {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+        {/* testimonial */}
+        <section>
+          <h2
+            ref={testiRef}
+            className="testimonial  text-center text-white text-[2rem] md:text-[4rem]  mt-8 font-thin"
+          >
+            HEAR _ WHAT _ OUR_ HAPPY_RENTERS _HAVE _ TO _SAY
+          </h2>
+
+          <div className="testi-main flex justify-around mt-[4rem]">
+            {testimonialdatas.map((item, index) => (
+              <div
+                key={index}
+                className="testi-cards w-[20rem] h-[30rem] gap-1 bg-gradient-to-b from-black to-gray-900 rounded-xl shadow-lg text-start flex flex-col p-4 relative overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gray-800 opacity-15 pointer-events-none rounded-xl"></div>
+                {/* Glossy effect */}
+                <img
+                  className="w-full h-[12rem] object-cover rounded-lg shadow-lg"
+                  src={item.img}
+                  alt=""
+                />
+                <h2 className="text-lg font-semibold mt-1 text-white">
+                  {item.name}
+                </h2>
+                <h6 className="text-sm text-gray-300">{item.trip}</h6>
+                <h4 className="text-white mt-2">
+                  <span className="text-yellow-500">{item.star}</span>{" "}
+                  {/* Star rating */}
+                </h4>
+                <p className="text-gray-300 mt-4 pb-3 text-start">
+                  {item.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className="flex w-[100%] justify-center items-center">
+          <div className="text-white mt-[4rem] flex-wrap lg:flex-nowrap p-5  flex justify-between w-[90%]  items-center bg-gradient-to-b from-black to-gray-900 rounded-xl shadow-lg">
+            <div className="lg:w-[30%] bg-">
+              <h2 className="text-[2rem] md:text-[3rem]">
+                DRIVE FIRST <br />
+                CLASS.PAY <br />
+                ECONOMY
+              </h2>
+              <p className="mt-4">
+                Premium vehicles without premium prices. We have over 222,000
+                rental vehicles in our fleet, which hosts models from some of
+                the best car manufacturers in the world, including German
+                favorites such as BMW, Mercedes, Audi and more
+              </p>
+            </div>
+            <div className="lg:w-[60%] flex flex-col  lg:mt-0 mt-7 gap-3">
+              <div className="flex w-full flex-wrap lg:justify-center gap-3">
+                <button className="border p-2 rounded-2xl bg-white text-black ">Kerala cities</button>
+                <button className="border p-2 rounded-2xl">Worldwide</button>
+                <button className=" border p-2 rounded-2xl">Most booked</button>
+                <button className="border p-2 rounded-2xl">Fleet & services</button>
+              </div>
+              <div className="flex flex-wrap lg:justify-evenly mt-3 gap-4">
+              <div className="">
+                <h4>Kochi</h4>
+                <h4>Clicut</h4>
+                <h4>Trivandrum</h4>
+                <h4>Kollam</h4>
+                <h4>Malappuram</h4>
+              </div>
+              <div>
+                <h4>Thiruvalla</h4>
+                <h4>Pathanamthitta</h4>
+                <h4>kottayam</h4>
+                <h4>Alappuzha</h4>
+                <h4>manjeri</h4>
+              </div>
+              <div>
+                <h4>Kondotty</h4>
+                <h4>Kakkanad</h4>
+                <h4>kottayam</h4>
+                <h4>Alappuzha</h4>
+                <h4>Thurakkal</h4>
+              </div>
+              <div>
+                <h4>Kzi</h4>
+                <h4>Edakkara</h4>
+                <h4>Thirur</h4>
+                <h4>Edappally</h4>
+                <h4>Rmka</h4>
+              </div>
+              </div>
+              <h3 class="lg:text-center mt-[2rem] lg:mt-[4rem] text-[2rem] relative inline-block group">
+  <span class="relative">
+    Car Rental Worldwide
+    <span class="block absolute bottom-0 left-0 w-0 h-[2px] bg-current transition-all duration-1000 ease-in-out group-hover:w-full"></span>
+  </span>
+</h3>
             </div>
           </div>
         </section>
