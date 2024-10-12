@@ -26,6 +26,8 @@ const Courser = ({ hoverRef }) => {
                 ease: "power1.out",
                 overwrite: "auto",
                 stagger: 0.02,
+                
+                border:2
             });
         });
 
@@ -36,18 +38,29 @@ const Courser = ({ hoverRef }) => {
                 letter.addEventListener("mouseenter", () => {
                     gsap.to(letter, {
                         scale: 1.2,
-                        color: "black", 
+                        
                         duration: 0.3,
                         ease: "power1.out",
                     });
+                    gsap.to('.ball', { 
+                        backgroundColor: 'white', 
+                        mixBlendMode: 'difference', 
+                        border: '1px solid black', 
+                        scale: 7 
+                      });
                 });
                 letter.addEventListener("mouseleave", () => {
                     gsap.to(letter, {
                         scale: 1,
-                        color: "gray",
+                  
                         duration: 0.3,
                         ease: "power1.out",
                     });
+                    gsap.to('.ball',{
+                      
+                        border:1,
+                        scale:1
+                    })
                 });
             });
         };
@@ -73,7 +86,7 @@ const Courser = ({ hoverRef }) => {
     }, [hoverRef]);
 
     return (
-        <div className="ball bg-white w-[3rem] z-50 h-[3rem] fixed top-0 left-0 rounded-full"></div> 
+        <div className="ball bg-white w-[3rem] outline-4 z-50 h-[3rem] fixed top-0 left-0 rounded-full"></div> 
     );
 }
 
