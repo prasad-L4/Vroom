@@ -12,6 +12,8 @@ const Home = () => {
   const Blurref = useRef(null);
   const testiRef = useRef(null);
   const hoverRef = useRef();
+  const component = useRef();
+  const slider = useRef();
   const car = [
     {
       img: "/Assets/images/carbanner.jpg ",
@@ -69,6 +71,34 @@ const Home = () => {
       star: "⭐⭐⭐⭐⭐",
       text: "The service I received was outstanding! The team was attentive and made sure I had everything I needed for my luxury rental. The car was beautiful and performed flawlessly. I’ll be returning for my next trip",
     },
+    {
+      img: "/Assets/images/pic-4.jpg",
+      name: "LAGARTHA",
+      trip: "1,573 Trips",
+      star: "⭐⭐⭐⭐⭐",
+      text: "The service I received was outstanding! The team was attentive and made sure I had everything I needed for my luxury rental. The car was beautiful and performed flawlessly. I’ll be returning for my next trip",
+    },
+    {
+      img: "/Assets/images/pic-4.jpg",
+      name: "LAGARTHA",
+      trip: "1,573 Trips",
+      star: "⭐⭐⭐⭐⭐",
+      text: "The service I received was outstanding! The team was attentive and made sure I had everything I needed for my luxury rental. The car was beautiful and performed flawlessly. I’ll be returning for my next trip",
+    },
+    {
+      img: "/Assets/images/pic-4.jpg",
+      name: "LAGARTHA",
+      trip: "1,573 Trips",
+      star: "⭐⭐⭐⭐⭐",
+      text: "The service I received was outstanding! The team was attentive and made sure I had everything I needed for my luxury rental. The car was beautiful and performed flawlessly. I’ll be returning for my next trip",
+    },
+    {
+      img: "/Assets/images/pic-4.jpg",
+      name: "LAGARTHA",
+      trip: "1,573 Trips",
+      star: "⭐⭐⭐⭐⭐",
+      text: "The service I received was outstanding! The team was attentive and made sure I had everything I needed for my luxury rental. The car was beautiful and performed flawlessly. I’ll be returning for my next trip",
+    },
   ];
  
   useLayoutEffect(() => {
@@ -93,7 +123,11 @@ const Home = () => {
     return () => {
       window.removeEventListener("load", onLoad);
     };
+
+    // testicards
+
   }, []);
+
 
   useEffect(() => {
     const breakText = () => {
@@ -152,6 +186,7 @@ const Home = () => {
         },
       });
     });
+ 
   }, []);
   useGSAP(() => {
     gsap.from(".banner-card", {
@@ -176,6 +211,34 @@ const Home = () => {
     });
   });
   // testimonail
+  const wrapperRef = useRef(null);
+  const sliderRef = useRef(null);
+  useEffect(() => {
+    const slider = sliderRef.current;
+    const wrapper = wrapperRef.current;
+    
+    const totalScrollWidth = slider.scrollWidth - wrapper.offsetWidth;
+    
+    // Automatic horizontal 
+    gsap.to(slider, {
+      x: -totalScrollWidth, 
+      ease: 'none',
+      duration: 660,
+    
+      scrollTrigger: {
+        trigger: wrapper,
+        scrub: true,
+        start: "top top",
+        end: `+=${totalScrollWidth}`,
+        pin: true,
+        invalidateOnRefresh: true
+      }
+    });
+    
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
 
   return (
     <>
@@ -281,43 +344,39 @@ const Home = () => {
           </div>
         </section>
         {/* testimonial */}
-        <section>
-          <h2
-            ref={testiRef}
-            className="testimonial  text-center text-white text-[2rem] md:text-[4rem]  mt-8 font-thin"
-          >
-            HEAR _ WHAT _ OUR_ HAPPY_RENTERS _HAVE _ TO _SAY
-          </h2>
-
-          <div className="testi-main flex justify-around mt-[4rem]">
-            {testimonialdatas.map((item, index) => (
-              <div
-                key={index}
-                className="testi-cards w-[20rem] h-[30rem] gap-1 bg-gradient-to-b from-black to-gray-900 rounded-xl shadow-lg text-start flex flex-col p-4 relative overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gray-800 opacity-15 pointer-events-none rounded-xl"></div>
-                {/* Glossy effect */}
-                <img
-                  className="w-full h-[12rem] object-cover rounded-lg shadow-lg"
-                  src={item.img}
-                  alt=""
-                />
-                <h2 className="text-lg font-semibold mt-1 text-white">
-                  {item.name}
-                </h2>
-                <h6 className="text-sm text-gray-300">{item.trip}</h6>
-                <h4 className="text-white mt-2">
-                  <span className="text-yellow-500">{item.star}</span>{" "}
-                  {/* Star rating */}
-                </h4>
-                <p className="text-gray-300 mt-4 pb-3 text-start">
-                  {item.text}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-        <section className="flex w-[100%] justify-center items-center">
+        <section className="relative w-full overflow-hidden">
+      <h2 className="testimonial text-center text-white text-[2rem] md:text-[4rem] pt-3 mt-8 font-thin">
+        HEAR _ WHAT _ OUR_ HAPPY_RENTERS _HAVE _ TO _SAY
+      </h2>
+      <div ref={wrapperRef} className="overflow-hidden w-[100vw] mt-3 h-screen relative">
+        <div ref={sliderRef} className="testi-main flex mt-[4rem] space-x-6">
+          {testimonialdatas.map((item, index) => (
+            <div
+              key={index}
+              className="testi-cards min-w-[100%] md:min-w-[20rem] lg:min-w-[24rem] w-[16rem] md:w-[20rem] lg:w-[24rem] h-[30rem] gap-1 bg-gradient-to-b from-black to-gray-900 rounded-xl shadow-lg text-start flex flex-col p-4 relative"
+            >
+              <div className="absolute inset-0 bg-gray-800 opacity-15 pointer-events-none rounded-xl"></div>
+        
+              <img
+                className="w-full h-[13rem] object-cover  rounded-lg shadow-lg object-center"
+                src={item.img}
+                alt={item.name}
+              />
+              <h2 className="text-lg font-semibold mt-1 text-white">
+                {item.name}
+              </h2>
+              <h6 className="text-sm text-gray-300">{item.trip}</h6>
+              <h4 className="text-white mt-2">
+                <span className="text-yellow-500">{item.star}</span>
+        
+              </h4>
+              <p className="text-gray-300 mt-4 pb-3 text-start">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+        <section className="flex w-[100%] mt-[-8rem] justify-center items-center">
           <div className="text-white mt-[4rem] flex-wrap lg:flex-nowrap p-5  flex justify-between w-[90%]  items-center bg-gradient-to-b from-black to-gray-900 rounded-xl shadow-lg">
             <div className="lg:w-[30%] bg-">
               <h2 className="text-[2rem] md:text-[3rem]">
@@ -340,28 +399,28 @@ const Home = () => {
                 <button className="border p-2 rounded-2xl">Fleet & services</button>
               </div>
               <div className="flex flex-wrap lg:justify-evenly mt-3 gap-4">
-              <div className="">
+              <div className=" flex flex-col gap-2">
                 <h4>Kochi</h4>
                 <h4>Clicut</h4>
                 <h4>Trivandrum</h4>
                 <h4>Kollam</h4>
                 <h4>Malappuram</h4>
               </div>
-              <div>
+              <div className=" flex flex-col gap-2">
                 <h4>Thiruvalla</h4>
                 <h4>Pathanamthitta</h4>
                 <h4>kottayam</h4>
                 <h4>Alappuzha</h4>
                 <h4>manjeri</h4>
               </div>
-              <div>
+              <div className=" flex flex-col gap-2">
                 <h4>Kondotty</h4>
                 <h4>Kakkanad</h4>
                 <h4>kottayam</h4>
                 <h4>Alappuzha</h4>
                 <h4>Thurakkal</h4>
               </div>
-              <div>
+              <div className=" flex flex-col gap-2">
                 <h4>Kzi</h4>
                 <h4>Edakkara</h4>
                 <h4>Thirur</h4>
@@ -378,6 +437,7 @@ const Home = () => {
             </div>
           </div>
         </section>
+   
       </main>
     </>
   );
