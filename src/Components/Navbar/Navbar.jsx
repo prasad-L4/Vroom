@@ -3,10 +3,11 @@ import { CiMenuFries } from "react-icons/ci";
 import { CgClose } from "react-icons/cg";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { Link } from "react-router-dom";
 const Navbar = () => {
   const [sideBar, setSideBar] = useState(false);
 
-  const navList = ["Home", "About", "Services", "Contact"];
+  const navList = [{name:"Home",path:'/'}, {name:"about",path:'/about'}, {name:"Subscription",path:'/subscription'}, {name:"Home",path:'/'}];
   useGSAP(() => {
     gsap.from(".navbar", {
       y: 35,
@@ -31,19 +32,19 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-black w-full pt-3 h-[5rem]">
+      <nav  className="bg-black w-full pt-3 h-[5rem] ">
         <div className="flex justify-between h-[3rem] sm:px-0 px-3 sm:justify-around text-white items-center overflow-hidden py-3">
           <img
             className="w-[100px] h-[50px]"
             src="/Assets/logo.png"
             alt="Logo"
           />
-          {navList.map((item, index) => (
+          {navList.map((item, index) => (     
             <ul
               key={index}
               className="navbar    sm:block hidden font-bold overflow-hidden"
             >
-              <li>{item}</li>
+             <Link to={item.path}><li>{item.name}</li> </Link> 
             </ul>
           ))}
           <button
@@ -78,14 +79,15 @@ const Navbar = () => {
             <div className="flex flex-col items-start justify-center p-4">
               {navList.map((item, index) => (
                 <ul className="sidebar mt-4">
-                  <li
+                 <Link to={item.path}>
+                 <li
                    
                     key={index}
                     ref={sideref}
                     className="my-2 bg-gradient-to-r from-gray-400 to-gray-700 bg-clip-text text-transparent text-[2rem] font-semibold w-[250px]"
                   >
-                    {item}
-                  </li>
+                    {item.name}
+                  </li> </Link>
                   <hr className="border-white " />
                 </ul>
               ))}

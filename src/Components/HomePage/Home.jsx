@@ -11,6 +11,8 @@ const Home = () => {
   const titleRef = useRef(null);
   const Blurref = useRef(null);
   const testiRef = useRef(null);
+  const wrapperRef = useRef(null);
+  const sliderRef = useRef(null);
   const hoverRef = useRef();
   const component = useRef();
   const slider = useRef();
@@ -72,25 +74,25 @@ const Home = () => {
       text: "The service I received was outstanding! The team was attentive and made sure I had everything I needed for my luxury rental. The car was beautiful and performed flawlessly. I’ll be returning for my next trip",
     },
     {
-      img: "/Assets/images/pic-4.jpg",
-      name: "LAGARTHA",
-      trip: "1,573 Trips",
+      img: "/Assets/images/pic-3.jpg",
+      name: "KATHERIN",
+      trip: "2,722 Trips",
       star: "⭐⭐⭐⭐⭐",
-      text: "The service I received was outstanding! The team was attentive and made sure I had everything I needed for my luxury rental. The car was beautiful and performed flawlessly. I’ll be returning for my next trip",
+      text: "The comfort and features were outstanding. Plus, the pick-up and drop-off were seamless. Highly recommend for anyone seeking a premium experience",
     },
     {
-      img: "/Assets/images/pic-4.jpg",
-      name: "LAGARTHA",
-      trip: "1,573 Trips",
+      img: "/Assets/images/pic-1.jpg",
+      name: "JOHN WICK",
+      trip: "5,722 Trips",
       star: "⭐⭐⭐⭐⭐",
-      text: "The service I received was outstanding! The team was attentive and made sure I had everything I needed for my luxury rental. The car was beautiful and performed flawlessly. I’ll be returning for my next trip",
+      text: "Renting a luxury car from this service was the highlight of my trip! The car was in immaculate condition, and driving it felt like a dream. The staff provided top-notch service, making the whole experience unforgettable.",
     },
     {
-      img: "/Assets/images/pic-4.jpg",
-      name: "LAGARTHA",
-      trip: "1,573 Trips",
-      star: "⭐⭐⭐⭐⭐",
-      text: "The service I received was outstanding! The team was attentive and made sure I had everything I needed for my luxury rental. The car was beautiful and performed flawlessly. I’ll be returning for my next trip",
+      img: "/Assets/images/pic-2.jpg",
+      name: "VINCENT",
+      trip: "3,322 Trips",
+      star: "⭐⭐⭐⭐",
+      text: "I rented a luxury sedan for a business trip, and it made quite an impression! The car was sleek, sophisticated, and drove like a dream. There was a slight delay during pick-up, but overall, I was very satisfied..",
     },
     {
       img: "/Assets/images/pic-4.jpg",
@@ -100,7 +102,6 @@ const Home = () => {
       text: "The service I received was outstanding! The team was attentive and made sure I had everything I needed for my luxury rental. The car was beautiful and performed flawlessly. I’ll be returning for my next trip",
     },
   ];
- 
   useLayoutEffect(() => {
     const onLoad = () => {
       gsap.from(titleRef.current, {
@@ -128,15 +129,12 @@ const Home = () => {
 
   }, []);
 
-
   useEffect(() => {
     const breakText = () => {
       if (Blurref.current) {
         const textContent = Blurref.current.textContent;
         const splitText = textContent.split("");
-
-        Blurref.current.innerHTML = "";
-
+       Blurref.current.innerHTML = "";
         splitText.forEach((elem) => {
           const span = document.createElement("span");
           span.className = "a";
@@ -145,7 +143,6 @@ const Home = () => {
         });
       }
     };
-
     breakText();
     gsap.from(".a", {
       opacity: 0.1,
@@ -157,27 +154,21 @@ const Home = () => {
         end: "bottom 70%",
       },
     });
-
     // testimonail;
     const testiElements = document.querySelectorAll(".testimonial");
-
     testiElements.forEach((testiElement) => {
       const splitElement = testiElement.textContent.split("");
       let clutter = "";
-
       splitElement.forEach((char) => {
-        clutter += `<span style="display:inline-block">${char}</span>`; // Ensure spans are inline-block
+        clutter += `<span style="display:inline-block">${char}</span>`; 
       });
-
       testiElement.innerHTML = clutter;
-
-      // Animate each span element
       gsap.from(testiElement.querySelectorAll("span"), {
-        y: 50, // Move the element 50px down and animate upward
+        y: 50, 
         opacity: 0,
         duration: 0.5,
         delay: 0.5,
-        stagger: 0.05, // Add a small delay between each span's animation
+        stagger: 0.05, 
         scrollTrigger: {
           trigger: testiElement,
           start: "top 80%",
@@ -186,7 +177,35 @@ const Home = () => {
         },
       });
     });
- 
+
+
+    const slider = sliderRef.current;
+    const wrapper = wrapperRef.current;
+    const totalScrollWidth = slider.scrollWidth - wrapper.offsetWidth;
+    window.scrollTo(0, 0);
+    // GSAP animation
+    gsap.to(slider, {
+      x: -totalScrollWidth, 
+      ease: 'none',
+      duration: 660,
+      scrollTrigger: {
+        trigger: wrapper,
+        scrub: true,
+        start: "top 10%",
+        end: `+=${totalScrollWidth}`,
+        pin: true,
+        markers: true,
+      }
+    });
+  
+    // Refresh ScrollTrigger to reset positions and markers
+    ScrollTrigger.refresh();
+  
+    // Clean up function
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+
   }, []);
   useGSAP(() => {
     gsap.from(".banner-card", {
@@ -210,41 +229,13 @@ const Home = () => {
       },
     });
   });
-  // testimonail
-  const wrapperRef = useRef(null);
-  const sliderRef = useRef(null);
-  useEffect(() => {
-    const slider = sliderRef.current;
-    const wrapper = wrapperRef.current;
-    
-    const totalScrollWidth = slider.scrollWidth - wrapper.offsetWidth;
-    
-    // Automatic horizontal 
-    gsap.to(slider, {
-      x: -totalScrollWidth, 
-      ease: 'none',
-      duration: 660,
-    
-      scrollTrigger: {
-        trigger: wrapper,
-        scrub: true,
-        start: "top top",
-        end: `+=${totalScrollWidth}`,
-        pin: true,
-        invalidateOnRefresh: true
-      }
-    });
-    
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
+
 
   return (
     <>
       <Banner />
 
-      <main className="bg-black  min-h-screen">
+      <main className="bg-black ">
         {/* Why Choose Us section */}
         <section className="flex justify-center flex-col text-center">
           <div
@@ -276,7 +267,7 @@ const Home = () => {
             </p>
           </div>
           <div>
-            <Courser hoverRef={hoverRef} />
+  
             {car.map((item, index) => (
               <div
                 key={index}
@@ -289,7 +280,7 @@ const Home = () => {
                 />
                 <div className="banner-text absolute inset-0 flex sm:gap-6 flex-col justify-center text-start items-start pl-9 md:pl-[7rem] sm:pt-[3rem] pt-5 pb-2 text-white">
                   <h2
-                    ref={hoverRef}
+                 
                     className=" md:text-[3vw] sm:text-[1.5rem] text-[1.1rem] font-bold mb-2 bg-gradient-to-r from-gray-400 to-black bg-clip-text text-transparent drop-shadow-lg"
                   >
                     {item.title}
@@ -310,7 +301,7 @@ const Home = () => {
               {carbanners.map((item, id) => (
                 <div
                   key={id}
-                  className="banner-card relative flex justify-center items-center w-[90%] md:w-[48%] "
+                  className="banner-card  flex justify-center items-center w-[90%] md:w-[48%] "
                 >
                   <img
                     src={item.img}
@@ -344,21 +335,21 @@ const Home = () => {
           </div>
         </section>
         {/* testimonial */}
-        <section className="relative w-full overflow-hidden">
+        <section className=" w-full overflow-hidden">
       <h2 className="testimonial text-center text-white text-[2rem] md:text-[4rem] pt-3 mt-8 font-thin">
         HEAR _ WHAT _ OUR_ HAPPY_RENTERS _HAVE _ TO _SAY
       </h2>
-      <div ref={wrapperRef} className="overflow-hidden w-[100vw] mt-3 h-screen relative">
+      <div ref={wrapperRef} className="overflow-hidden w-[100vw]    mt-3 h-screen ">
         <div ref={sliderRef} className="testi-main flex mt-[4rem] space-x-6">
           {testimonialdatas.map((item, index) => (
             <div
               key={index}
-              className="testi-cards min-w-[100%] md:min-w-[20rem] lg:min-w-[24rem] w-[16rem] md:w-[20rem] lg:w-[24rem] h-[30rem] gap-1 bg-gradient-to-b from-black to-gray-900 rounded-xl shadow-lg text-start flex flex-col p-4 relative"
+              className="testi-cards min-w-[100%] sm:min-w-[20rem] lg:min-w-[24rem] w-[16rem] md:w-[20rem] lg:w-[24rem] h-[32rem] gap-1 bg-gradient-to-b from-black to-gray-900 rounded-xl shadow-lg text-start flex flex-col p-4 relative"
             >
-              <div className="absolute inset-0 bg-gray-800 opacity-15 pointer-events-none rounded-xl"></div>
+              <div className=" inset-0 bg-gray-800 opacity-15 pointer-events-none rounded-xl"></div>
         
               <img
-                className="w-full h-[13rem] object-cover  rounded-lg shadow-lg object-center"
+                className="sm:w-full  h-[16rem] object-cover  rounded-lg shadow-lg object-center"
                 src={item.img}
                 alt={item.name}
               />
@@ -376,6 +367,7 @@ const Home = () => {
         </div>
       </div>
     </section>
+  
         <section className="flex w-[100%] mt-[-8rem] justify-center items-center">
           <div className="text-white mt-[4rem] flex-wrap lg:flex-nowrap p-5  flex justify-between w-[90%]  items-center bg-gradient-to-b from-black to-gray-900 rounded-xl shadow-lg">
             <div className="lg:w-[30%] bg-">
@@ -431,7 +423,7 @@ const Home = () => {
               <h3 class="lg:text-center mt-[2rem] lg:mt-[4rem] text-[2rem] relative inline-block group">
   <span class="relative">
     Car Rental Worldwide
-    <span class="block absolute bottom-0 left-0 w-0 h-[2px] bg-current transition-all duration-1000 ease-in-out group-hover:w-full"></span>
+    <span class="block absolute bottom-0 left-0 w-0 h-[2px] bg-current transition-all duration-800 ease-in-out group-hover:w-full"></span>
   </span>
 </h3>
             </div>
