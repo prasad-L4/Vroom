@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const [sideBar, setSideBar] = useState(false);
 
-  const navList = [{name:"Home",path:'/'}, {name:"about",path:'/about'}, {name:"Subscription",path:'/subscription'}, {name:"Home",path:'/'}];
+  const navList = [{name:"Home",path:'/'}, {name:"about",path:'/about'}, {name:"Subscription",path:'/subscription'}, {name:"Cars",path:'/cars'}];
   useGSAP(() => {
     gsap.from(".navbar", {
       y: 35,

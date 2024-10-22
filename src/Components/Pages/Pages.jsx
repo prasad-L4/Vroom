@@ -4,6 +4,7 @@ import Home from '../HomePage/Home'
 import Footer from '../Footer/Footer'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Subscription from '../Subscription/Subscription';
+import Cars from '../Cars/Cars';
 const Pages = () => {
   return (
     <div>
@@ -12,6 +13,7 @@ const Pages = () => {
             <Routes>
                 <Route path='/' element={ <Home/>}/>
                 <Route path='/subscription' element={ <Subscription/>}/>
+                <Route path='/cars' element={ <Cars/>}/>
             </Routes>
         </Router>
      

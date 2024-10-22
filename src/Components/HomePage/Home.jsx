@@ -106,13 +106,15 @@ const Home = () => {
     const onLoad = () => {
       gsap.from(titleRef.current, {
         opacity: 0,
-        duration: 0.1,
+        duration: 1,
         delay: 0.1,
-        y: 50,
+        scale:0,
+        y:50,
+    
         scrollTrigger: {
           trigger: "#promis",
           start: "top 90%",
-          end: "top 10%",
+          end: "top 50%",
           scrub: 1,
         },
       });
@@ -125,7 +127,7 @@ const Home = () => {
       window.removeEventListener("load", onLoad);
     };
 
-    // testicards
+
 
   }, []);
 
@@ -146,12 +148,15 @@ const Home = () => {
     breakText();
     gsap.from(".a", {
       opacity: 0.1,
-      stagger: 0.1,
+      stagger: .1,
+      duration:1.5,
+      delay:1,
+      ease: "power1.inOut",
       scrollTrigger: {
         trigger: Blurref.current,
-        scrub: true,
+        scrub: 3,
         start: "top bottom",
-        end: "bottom 70%",
+        end: "bottom 10%",
       },
     });
     // testimonail;
@@ -237,24 +242,29 @@ const Home = () => {
 
       <main className="bg-black ">
         {/* Why Choose Us section */}
-        <section className="flex justify-center flex-col text-center">
+        <section className="">
+          <div className="flex flex-col justify-center items-center w-[100%]">
           <div
             id="promis"
-            className="text-white flex justify-center items-center flex-col overflow-hidden text-[1rem] sm:text-[2.4rem] pt-[4rem] w-full max-w-3xl mx-auto" // Set width and max width with margin auto for centering
+            className="text-white flex justify-center items-center flex-col overflow- text-[1rem] sm:text-[2.4rem] pt-[4rem] w-[90%]  "
           >
             <h2
               ref={titleRef}
-              className="promis-title text-[2rem] sm:text-[5rem] mt-[-2rem] font-ubuntu"
+              className="promis-title text-[2rem] sm:text-[5rem] mt-[-2rem] font-Rajdhani"
             >
               Your Journey, Our Promise
             </h2>
             <p
               ref={Blurref}
-              className="text w-[80%]  md:w-full  pt-6 text-white mt-5 mb-5 text-center "
+              className="text w-[80%]   md:w-full p-4 pt-6 text-gray-700 font-ubuntu font-medium  mt-5 mb-5 "
               style={{
-                overflowWrap: "break-word",
                 wordWrap: "break-word",
+                overflowWrap: "break-word",
+                wordBreak: "break-word",
+                hyphens: "auto",
+                textJustify: "inter-word",
               }}
+          
             >
               At Vroom, our journey is built on trust, and our promise is
               hassle-free car rentals. From economy to luxury vehicles, we offer
@@ -266,6 +276,8 @@ const Home = () => {
               promise—smooth, simple, and convenient.
             </p>
           </div>
+          </div>
+          
           <div>
   
             {car.map((item, index) => (
