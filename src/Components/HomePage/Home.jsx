@@ -149,7 +149,7 @@ const Home = () => {
     gsap.from(".a", {
       opacity: 0.1,
       stagger: .1,
-      duration:1.5,
+      duration:1,
       delay:1,
       ease: "power1.inOut",
       scrollTrigger: {
