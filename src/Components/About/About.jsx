@@ -51,6 +51,7 @@ const About = () => {
     });
     gsap.to("h2 span", {
       opacity: 0,
+
       scrollTrigger: {
         trigger: ".title-main",
         start: "top 0%",
@@ -72,8 +73,8 @@ const About = () => {
       },
     });
     gsap.from(".abt-card", {
-      scale: 0,
-      duration: 1,
+      x: -150,
+      duration: 0.1,
 
       scrollTrigger: {
         trigger: ".abt-card",
@@ -83,106 +84,98 @@ const About = () => {
       },
     });
 
-    gsap.to('.abt-img1',{
-      translateX:'100%',
-     
-  
-  
-        rotate:-30,
-        duration:1,
-   scale:.3,
-        scrollTrigger:{
-            trigger:'.card-swipe',
-            start:'top -10%',
-            end:'top -80%',
-            marker:true,
-            scrub:1,
-            scroller:'body',
-            pin:true
-        }
-    })
-    
-    gsap.to('.abt-img2',{
-      translateX:'-90%',
-     
-      translateY:'-35%',
-        rotate:30,
-        scale:.3,
-        duration:1,
-        scrollTrigger:{
-            trigger:'.card-swipe',
-            start:'top -10%',
-            end:'top -80%',
-            scrub:1,
-            scroller:'body',
-           
-        }
-    })
-    gsap.to('.abt-img3',{
-      translateX:'-80%',
-     
-      translateY:'45%',
-        rotate:-30,
-        scale:.3,
-        duration:1,
-        scrollTrigger:{
-            trigger:'.card-swipe',
-            start:'top -10%',
-            end:'top -80%',
-            scrub:1,
-            scroller:'body',
-           
-        }
-    })
-    gsap.to('.abt-img4',{
-      translateY:'-40%',
-       translateX:'80%',
-        rotate:30,
-        scale:.3,
-        duration:1,
-        scrollTrigger:{
-            trigger:'.card-swipe',
-            start:'top -10%',
-            end:'top -80%',
-            scrub:1,
-            scroller:'body',
-           
-        }
-    })
-    
-    gsap.to('.abt-img5',{
-       translateX:'70%',
-     
-        translateY:'45%',
-         rotate:-30,
-         scale:.3,
-         duration:1,
-         scrollTrigger:{
-             trigger:'.card-swipe',
-             start:'top -10%',
-             end:'top -80%',
-             scrub:1,
-             scroller:'body',
-            
-         }
-     })
-     gsap.to('.swiper-card-text',{
-     opacity:1,
-     delay:2,
-     scale:1,
-     duration:1,
-       scrollTrigger:{
-             trigger:'.card-swipe',
-             start:'top -10%',
-             end:'top -80%',
-             scrub:1,
-             scroller:'body',
-            
-         }
-     })
+    gsap.to(".abt-img1", {
+      translateX: "100%",
+
+      rotate: -30,
+      duration: 1,
+      scale: 0.3,
+      scrollTrigger: {
+        trigger: ".card-swipe",
+        start: "top -10%",
+        end: "top -80%",
+        marker: true,
+        scrub: 1,
+        scroller: "body",
+        pin: true,
+      },
+    });
+
+    gsap.to(".abt-img2", {
+      translateX: "-90%",
+
+      translateY: "-35%",
+      rotate: 30,
+      scale: 0.3,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".card-swipe",
+        start: "top -10%",
+        end: "top -80%",
+        scrub: 1,
+        scroller: "body",
+      },
+    });
+    gsap.to(".abt-img3", {
+      translateX: "-80%",
+
+      translateY: "45%",
+      rotate: -30,
+      scale: 0.3,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".card-swipe",
+        start: "top -10%",
+        end: "top -80%",
+        scrub: 1,
+        scroller: "body",
+      },
+    });
+    gsap.to(".abt-img4", {
+      translateY: "-40%",
+      translateX: "80%",
+      rotate: 30,
+      scale: 0.3,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".card-swipe",
+        start: "top -10%",
+        end: "top -80%",
+        scrub: 1,
+        scroller: "body",
+      },
+    });
+
+    gsap.to(".abt-img5", {
+      translateX: "70%",
+
+      translateY: "45%",
+      rotate: -30,
+      scale: 0.3,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".card-swipe",
+        start: "top -10%",
+        end: "top -80%",
+        scrub: 1,
+        scroller: "body",
+      },
+    });
+    gsap.to(".swiper-card-text", {
+      opacity: 1,
+      delay: 2,
+      scale: 1,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".card-swipe",
+        start: "top -10%",
+        end: "top -80%",
+        scrub: 1,
+        scroller: "body",
+      },
+    });
   });
 
-  
   const profileCards = [
     { img: "/Assets/images/abt-pro-1.jpg" },
     { img: "/Assets/images/abt-pro-2.jpg" },
@@ -191,13 +184,12 @@ const About = () => {
     { img: "/Assets/images/abt-pro-5.jpg" },
   ];
 
-
   return (
     <>
       <main className="bg-black ">
-        <div className="title-sec w-[100%]  overflow-x-hidden  flex justify-center">
+        <div className="title-sec w-[100%]  overflow-x-hidden  flex justify-center items-center">
           <div className="titile-main w-[90%] overflow-hidden md:h-[30rem] lg:h-[40rem]    mt-5">
-            <h2 className=" flex flex-col gap-3  text-gray-400 items-center text-[1.5rem] md:text-[2rem] lg:text-[3rem] font-Rajdhani font-bold">
+            <h2 className=" flex flex-col gap-3  text-gray-400 items-center text-[1.6rem] md:text-[2rem] lg:text-[3rem] font-Rajdhani font-bold">
               Discover Our Story:A <br />{" "}
               <div className="vdeosec bg-white z-50 w-[10rem] md:w-[12rem] flex justify-center items-center h-[6rem] pt-3  relative text-black rounded-xl p-2">
                 {" "}
@@ -216,6 +208,17 @@ const About = () => {
                 Story of Excellence in Car Rental Services
               </span>{" "}
             </h2>
+            <div className="bg-gradient-to-b from-black to-gray-950 rounded-xl text-[2rem] mt-7 lg:mt-[4rem] sm:p-3 font-Rajdhani">
+  <marquee behavior="scroll" direction="left">
+  <img className="inline-block" src="/Assets/images/gif.gif" alt="" />
+    <h2 className="text-white inline-block mr-10">Welcome to Vroom - Your Trusted Car Rental Service</h2>
+    <h2 className="text-white inline-block mr-10">Who We Are: Dedicated to Providing the Best Car Rental Experience</h2>
+    <h2 className="text-white inline-block mr-10">Our Mission: Quality, Reliability, and Convenience for Every Journey</h2>
+    <h2 className="text-white inline-block mr-10">Why Choose Vroom: Top Cars, Great Prices, Excellent Service</h2>
+    <h2 className="text-white inline-block">Contact Us: Let Us Help You Get On the Road Today!</h2>
+  
+  </marquee>
+</div>
           </div>
         </div>
 
@@ -224,7 +227,7 @@ const About = () => {
             <span>From</span> <span>Roadmap</span> <span>to</span>{" "}
             <span>Reality</span> <span>: Our Story</span>{" "}
           </h3>
-          <div className="abt-card flex flex-col gap-3  lg:flex-row w-[90%] bg-gradient-to-b from-black to-gray-950 rounded-xl p-5 mx-auto">
+          <div className="abt-card flex flex-col gap-3 overflow-x-hidden  lg:flex-row w-[90%] bg-gradient-to-b from-black to-gray-950 rounded-xl p-5 mx-auto">
             <div className="w-full lg:w-[50%] gap-3 flex flex-col ">
               <h4 className="text-[1.3rem] md:text-[2rem]">
                 Driven by Vision, Fueled by Growth
@@ -259,12 +262,12 @@ const About = () => {
           </div>
         </section>
         <section className=" overflow-x-hidden">
-          <div className="card-swipe text-white relative overflow-hidden  sm:h-screen h-[30rem] items-center flex justify-center ">
+          <div className="card-swipe text-white relative overflow-hidden  h-screen  items-center flex justify-center ">
             <div className="swiper-card-text opacity-0 flex flex-col w-[80%] md:w-[40%] justify-center items-center">
               <h3 className=" sm:text-[1.4rem] md:text-[2rem] text-center">
                 The People Behind the Wheel of Our Success
               </h3>
-              <p className="text-center text-[.8rem] md:text-[1rem]"> 
+              <p className="text-center text-[.8rem] md:text-[1rem]">
                 Our team is the driving force behind everything we do, committed
                 to delivering exceptional service every step of the way. With
                 diverse expertise and a shared passion for excellence, we work
@@ -273,36 +276,56 @@ const About = () => {
               </p>
             </div>
 
-            <div className=" flex justify-center items-center  " >
+            <div className=" flex justify-center items-center  ">
               <img
-                className="abt-img1 w-[10rem] h-[10rem] sm:w-[15rem] sm:h-[15rem]  md:w-[20rem] md:h-[20rem]  lg:w-[30rem]  absolute object-cover rounded-3xl lg:h-[30rem]"
-                src='/Assets/images/abt-pro-1.jpg'
+                className="abt-img1 hidden sm:block w-[10rem] h-[10rem] sm:w-[15rem] sm:h-[15rem]  md:w-[20rem] md:h-[20rem]  lg:w-[30rem]  absolute object-cover rounded-3xl lg:h-[30rem]"
+                src="/Assets/images/abt-pro-1.jpg"
                 alt=""
-                style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
+                style={{
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
               />
               <img
                 className="abt-img2 w-[10rem] h-[10rem] sm:w-[15rem] sm:h-[15rem] md:w-[20rem] md:h-[20rem] lg:w-[30rem]  rounded-3xl object-cover absolute lg:h-[30rem]"
-                src='/Assets/images/abt-pro-2.jpg'
+                src="/Assets/images/abt-pro-2.jpg"
                 alt=""
-                style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
+                style={{
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
               />
               <img
                 className="abt-img3 w-[10rem] h-[10rem] sm:w-[15rem] sm:h-[15rem] md:w-[20rem] md:h-[20rem] lg:w-[30rem]  rounded-3xl object-cover absolute lg:h-[30rem]"
-                 src='/Assets/images/abt-pro-3.jpg'
+                src="/Assets/images/abt-pro-3.jpg"
                 alt=""
-                style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
+                style={{
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
               />
               <img
                 className="abt-img4 w-[10rem] h-[10rem] sm:w-[15rem] sm:h-[15rem]  md:w-[20rem] md:h-[20rem] lg:w-[30rem]  rounded-3xl object-cover absolute lg:h-[30rem]"
-              src='/Assets/images/abt-pro-4.jpg'
+                src="/Assets/images/abt-pro-4.jpg"
                 alt=""
-                style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
+                style={{
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
               />
               <img
-                className="abt-img5 w-[10rem] h-[10rem] sm:w-[15rem] sm:h-[15rem] md:w-[20rem] md:h-[20rem] lg:w-[30rem]  rounded-3xl object-cover absolute lg:h-[30rem]"
-               src='/Assets/images/abt-pro-5.jpg'
+                className="abt-img5  w-[10rem] h-[10rem] sm:w-[15rem] sm:h-[15rem] md:w-[20rem] md:h-[20rem] lg:w-[30rem]  rounded-3xl object-cover absolute lg:h-[30rem]"
+                src="/Assets/images/abt-pro-5.jpg"
                 alt=""
-                style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
+                style={{
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
               />
             </div>
           </div>

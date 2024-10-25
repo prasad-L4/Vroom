@@ -66,7 +66,7 @@ const Navbar = () => {
           ></div>
 
           {/* Sidebar */}
-          <nav className="mainsidebar fixed top-0 right-0 bg-black w-[250px] h-full z-30 transform transition-transform duration-300 ease-in-out">
+          <nav style={{zIndex:'9999'}} className="mainsidebar fixed top-0 right-0 bg-black w-[250px] h-full z-50 transform transition-transform duration-300 ease-in-out">
             <div className="flex justify-end p-3 text-[2rem]">
               <button
                 onClick={() => setSideBar(false)}
