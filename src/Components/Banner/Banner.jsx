@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import React, { useEffect, useState } from "react";
 import gsap from "gsap";
-import { TiTick } from "react-icons/ti";
+
 const Banner = () => {
   const [scrollY, setScrollY] = useState(0);
   const [bgColor, setBgColor] = useState("transparent");
