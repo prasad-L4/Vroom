@@ -6,10 +6,12 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Subscription from '../Subscription/Subscription';
 import Cars from '../Cars/Cars';
 import About from '../About/About';
+import Courser from '../Courser/Courser';
 const Pages = () => {
   return (
     <div>
         <Router>
+        <Courser/>
         <Navbar/>
             <Routes>
                 <Route path='/' element={ <Home/>}/>

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const [sideBar, setSideBar] = useState(false);
 
-  const navList = [{name:"Home",path:'/'}, {name:"about",path:'/about'}, {name:"Subscription",path:'/subscription'}, {name:"Cars",path:'/cars'}];
+  const navList = [{name:"Home",path:'/'}, {name:"About Us",path:'/about'}, {name:"Subscription",path:'/subscription'}, {name:"Cars",path:'/cars'}];
   useGSAP(() => {
     gsap.from(".navbar", {
       y: 35,
@@ -33,7 +33,7 @@ const Navbar = () => {
   return (
     <>
       <nav  className="bg-black w-full pt-3 h-[5rem] ">
-        <div className="flex justify-between h-[3rem] sm:px-0 px-3 sm:justify-around text-white items-center overflow-hidden py-3">
+        <div className="flex justify-between h-[3rem] font-Rajdhani sm:px-0 px-3 sm:justify-around text-white items-center overflow-hidden py-3">
           <img
             className="w-[100px] h-[50px]"
             src="/Assets/logo.png"

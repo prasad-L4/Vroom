@@ -9,6 +9,7 @@ module.exports = {
         ubuntu: ['"Ubuntu"', 'sans-serif'],
         inter: ['"Inter"', 'sans-serif'],
         Rajdhani: ['"Rajdhani"', 'sans-serif'], 
+        Satisfy: ['"Satisfy"', 'cursive'], 
       },
       backgroundImage: {
         'custom-gradient': 'linear-gradient(180deg, #adb0be 0%, #0d0c0d 100%)',

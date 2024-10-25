@@ -197,6 +197,24 @@ const About = () => {
         scrub: 1,
       },
     })
+    const tessimonai=document.querySelectorAll('.testi')
+    tessimonai.forEach((elem)=>{
+      gsap.from(elem,{
+scale:0,
+        duration:1,
+        stagger:1,
+        scrollTrigger:{
+          trigger:'.testi',
+          start:'top 90%',
+          end:'top 50%',
+          scrub:1,
+    
+
+        }
+         
+      })
+    })
+ 
   });
 
   const profileCards = [
@@ -206,7 +224,38 @@ const About = () => {
     { img: "/Assets/images/abt-pro-4.jpg" },
     { img: "/Assets/images/abt-pro-5.jpg" },
   ];
+  const testimonialdatas = [
+    {
+      img: "/Assets/images/pic-1.jpg",
+      name: "JOHN WICK",
+      trip: "5,722 Trips",
+      star: "⭐⭐⭐⭐⭐",
+      text: "Renting a luxury car from this service was the highlight of my trip! The car was in immaculate condition, and driving it felt like a dream. The staff provided top-notch service, making the whole experience unforgettable.",
+    },
+    {
+      img: "/Assets/images/pic-3.jpg",
+      name: "KATHERIN",
+      trip: "2,722 Trips",
+      star: "⭐⭐⭐⭐⭐",
+      text: "The comfort and features were outstanding. Plus, the pick-up and drop-off were seamless. Highly recommend for anyone seeking a premium experience",
+    },
+    {
+      img: "/Assets/images/pic-2.jpg",
+      name: "VINCENT",
+      trip: "3,322 Trips",
+      star: "⭐⭐⭐⭐",
+      text: "I rented a luxury sedan for a business trip, and it made quite an impression! The car was sleek, sophisticated, and drove like a dream. There was a slight delay during pick-up, but overall, I was very satisfied..",
+    },
+    {
+      img: "/Assets/images/pic-4.jpg",
+      name: "LAGARTHA",
+      trip: "1,573 Trips",
+      star: "⭐⭐⭐⭐⭐",
+      text: "The service I received was outstanding! The team was attentive and made sure I had everything I needed for my luxury rental. The car was beautiful and performed flawlessly. I’ll be returning for my next trip",
+    },
 
+  
+  ];
   return (
     <>
       <main className="bg-black ">
@@ -354,6 +403,33 @@ const About = () => {
           </div>
         </section>
         <div>
+          
+
+          <div>
+          <div className="testi flex justify-center flex-wrap sm:mt-[6rem]  gap-5 w-[100%] ">
+      {testimonialdatas.map((item, index) => (
+        <div
+          key={index}
+          className="testi-cards  flex-wrap justify-center items-center w-[90%] sm:w-[80%]  md:w-[20rem] lg:w-[22rem]  p-3 gap-1 bg-gradient-to-b from-black to-gray-900 rounded-xl shadow-lg "
+        >
+          <div className="inset-0 bg-gray-800 opacity-15 pointer-events-none rounded-xl"></div>
+
+          <img
+            className="w-[100%] sm:w-full md:h-[16rem] h-[10rem] sm:h-[18rem] flex justify-center items-center  object-cover rounded-lg shadow-lg object-center"
+            src={item.img}
+            alt={item.name}
+          />
+          <h2 className=" sm:text-lg font-semibold mt-1 text-white">{item.name}</h2>
+          <h6 className="text-sm text-gray-300">{item.trip}</h6>
+          <h4 className="text-white mt-2">
+            <span className="text-[.5rem] sm:text-[1rem] text-yellow-500">{item.star}</span>
+          </h4>
+          <p className="text-[.8rem] text-gray-300 mt-4 pb-3 text-start">{item.text}</p>
+        </div>
+      ))}
+    </div>
+          </div>
+
         <div className="call-btns mt-[4rem] overflow-hidden ">
                   <h2 className="text-[2.5rem] text-center font-Rajdhani bg-gradient-to-r from-gray-400 to-gray-900 bg-clip-text text-transparent drop-shadow-lg">
                     Do you have any further questions?
