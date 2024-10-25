@@ -23,7 +23,7 @@ const About = () => {
       },
     });
     gsap.to(".vdeosec", {
-      width: window.innerWidth,
+      width: window.innerWidth* 0.9,
       height: calculateScale(),
 
       top: 50,
@@ -242,12 +242,12 @@ const About = () => {
   ];
   return (
     <>
-      <main className="bg-black ">
-        <div className="title-sec w-[100%]  overflow-x-hidden  flex justify-center items-center">
-          <div className="titile-main w-[90%] overflow-hidden md:h-[30rem] lg:h-[40rem]    mt-5">
+      <main style={{overflowX:'hidden'}} className="bg-black overflow-hidden  ">
+        <div  className="title-sec w-[100%]  overflow-hidden  flex justify-center items-center">
+          <div  className="titile-main w-[90%] overflow-hidden md:h-[30rem] lg:h-[40rem]    mt-5">
             <h2 className=" flex flex-col gap-3  text-gray-400 items-center text-[1.6rem] md:text-[2rem] lg:text-[3rem] font-Rajdhani font-bold">
               Discover Our Story:A <br />{" "}
-              <div className="vdeosec bg-white z-50 w-[10rem] md:w-[12rem] flex justify-center items-center h-[6rem] pt-3  relative text-black rounded-xl p-2">
+              <div  className="vdeosec  bg-white z-50 w-[10rem] md:w-[12rem] flex justify-center  items-center h-[6rem] pt-3  relative text-black rounded-xl p-2">
                 {" "}
                 <h3 className=" title-text  text-center"> Video</h3>{" "}
                 <video
@@ -264,7 +264,7 @@ const About = () => {
                 Story of Excellence in Car Rental Services
               </span>{" "}
             </h2>
-            <div className="bg-gradient-to-b from-black to-gray-950 rounded-xl text-[2rem] mt-7 lg:mt-[6rem] sm:p-3 font-Rajdhani">
+            <div className="bg-gradient-to-b from-black overflow-x-hidden to-gray-950 rounded-xl text-[2rem] mt-7 lg:mt-[6rem] sm:p-3 font-Rajdhani">
   <marquee behavior="scroll" direction="left">
   <img className="inline-block" src="/Assets/images/gif.gif" alt="" />
     <h2 className="text-white inline-block mr-10">Welcome to Vroom - Your Trusted Car Rental Service</h2>
@@ -390,7 +390,7 @@ const About = () => {
           
 
           <div>
-          <div className="testi flex justify-center flex-wrap sm:mt-[6rem]  gap-5 w-[100%] ">
+          <div className="testi flex justify-center overflow-hidden flex-wrap sm:mt-[6rem]  gap-5 w-[100%] ">
       {testimonialdatas.map((item, index) => (
         <div
           key={index}
