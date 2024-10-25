@@ -197,23 +197,7 @@ const About = () => {
         scrub: 1,
       },
     })
-    const tessimonai=document.querySelectorAll('.testi')
-    tessimonai.forEach((elem)=>{
-      gsap.from(elem,{
-scale:0,
-        duration:1,
-        stagger:1,
-        scrollTrigger:{
-          trigger:'.testi',
-          start:'top 90%',
-          end:'top 50%',
-          scrub:1,
-    
-
-        }
-         
-      })
-    })
+  
  
   });
 
