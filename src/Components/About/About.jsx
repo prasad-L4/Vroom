@@ -1,12 +1,12 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import React from "react";
-
+import { MdOutlinePhoneInTalk, MdOutlineMailOutline } from "react-icons/md";
 const About = () => {
   const calculateScale = () => {
-    const screenWidth = window.innerWidth; // Get the current screen width
+    const screenWidth = window.innerWidth; 
     if (screenWidth < 600) {
-      return "10rem"; // Extra small screens
+      return "10rem"; 
     } else {
       return "30rem";
     }
@@ -174,6 +174,29 @@ const About = () => {
         scroller: "body",
       },
     });
+    gsap.from('.cntct-sec',{
+      y:150,
+      duration:1,
+      scrollTrigger: {
+        trigger: ".cntct-sec",
+        start: "top 0%",
+        end: "top -80%",
+        scrub: 1,
+        scroller: "body",
+      },
+    })
+    gsap.from('.call-btns',{
+      y:120,
+      duration:1,
+      delay:1,
+      opacity:0,
+      scrollTrigger: {
+        trigger: ".call-btns",
+        start: "top 90%",
+        end: "top 60%",
+        scrub: 1,
+      },
+    })
   });
 
   const profileCards = [
@@ -208,7 +231,7 @@ const About = () => {
                 Story of Excellence in Car Rental Services
               </span>{" "}
             </h2>
-            <div className="bg-gradient-to-b from-black to-gray-950 rounded-xl text-[2rem] mt-7 lg:mt-[4rem] sm:p-3 font-Rajdhani">
+            <div className="bg-gradient-to-b from-black to-gray-950 rounded-xl text-[2rem] mt-7 lg:mt-[6rem] sm:p-3 font-Rajdhani">
   <marquee behavior="scroll" direction="left">
   <img className="inline-block" src="/Assets/images/gif.gif" alt="" />
     <h2 className="text-white inline-block mr-10">Welcome to Vroom - Your Trusted Car Rental Service</h2>
@@ -330,6 +353,28 @@ const About = () => {
             </div>
           </div>
         </section>
+        <div>
+        <div className="call-btns mt-[4rem] overflow-hidden ">
+                  <h2 className="text-[2.5rem] text-center font-Rajdhani bg-gradient-to-r from-gray-400 to-gray-900 bg-clip-text text-transparent drop-shadow-lg">
+                    Do you have any further questions?
+                  </h2>
+                  <div className=" flex gap-4 mt-[3rem] flex-wrap justify-center">
+                    <button className="flex justify-center items-center gap-2  w-[90%] sm:w-[20rem] text-[1rem] sm:text-[1.5rem] font-Rajdhani h-[3rem] rounded-md  bg-gradient-to-r from-blue-600 to-blue-900 drop-shadow-lg">
+              
+                      <span>
+                        <MdOutlinePhoneInTalk />
+                      </span>
+                      Call US
+                    </button>
+                    <button className="flex justify-center items-center gap-2  w-[90%] sm:w-[20rem] h-[3rem] font-Rajdhani text-[1rem] sm:text-[1.5rem] rounded-md bg-gradient-to-r from-blue-600 to-blue-900 drop-shadow-lg">
+                      <span>
+                        <MdOutlineMailOutline />
+                      </span>{" "}
+                      Email US
+                    </button>
+                  </div>
+                </div>
+        </div>
       </main>
     </>
   );
