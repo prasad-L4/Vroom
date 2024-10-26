@@ -28,6 +28,7 @@ const Navbar = () => {
       });
     }
   }, [sideBar]);
+
   const sideref = useRef(null);
 
   return (
@@ -76,12 +77,12 @@ const Navbar = () => {
               </button>
             </div>
 
-            <div className="flex flex-col items-start justify-center p-4">
+            <div className="flex flex-col items-start justify-center gap-10 p-4">
               {navList.map((item, index) => (
                 <ul className="sidebar mt-4">
                  <Link to={item.path}>
                  <li
-                   
+                     onClick={() => setSideBar(false)}
                     key={index}
                     ref={sideref}
                     className="my-2 bg-gradient-to-r from-gray-400 to-gray-700 bg-clip-text text-transparent text-[2rem] font-semibold w-[250px]"

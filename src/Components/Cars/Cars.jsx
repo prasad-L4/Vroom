@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-
+import { MdOutlinePhoneInTalk, MdOutlineMailOutline } from "react-icons/md";
 const Cars = () => {
   const [scrollY, setScrollY] = useState(0);
   const [bgColor, setBgColor] = useState("transparent");
@@ -179,18 +179,7 @@ const Cars = () => {
 
   const sliderRef = useRef(null);
 
-  useEffect(() => {
-    // GSAP Animation for infinite horizontal scrolling
-    const sliderWidth = sliderRef.current.scrollWidth - sliderRef.current.clientWidth;
-    
-    gsap.to(sliderRef.current, {
-      x: -sliderWidth, 
-      duration: 15, 
-      ease: 'linear',
-      repeat: -1, // Infinite loop
-    });
 
-  }, []);
 
   return (
     <main className="bg-black ">
@@ -287,15 +276,15 @@ const Cars = () => {
               Explore Our Fleet: Find the Perfect Car for Your Journey
             </h2>
 
-            <div className="container max-w-[100%] mx-auto">
+            <div className="container max-w-[100%] w-[100%] mx-auto">
               <div className=" w-full p-4 rounded-xl ">
                 <div className="cards p-6 rounded-xl ">
                   {CarCards.map((item, index) => (
                     <div
                       key={index}
-                      className="card sticky top-4  w-full   grid grid-cols-1 md:grid-cols-2 items-start gap-4 h-auto bg-gradient-to-b from-black to-gray-950 rounded-xl"
+                      className="card sticky top-4 w-[100%] sm:w-full   grid grid-cols-1 md:grid-cols-2 items-start gap-4 h-auto bg-gradient-to-b from-black to-gray-950 rounded-xl"
                     >
-                      <div className="md:w-full">
+                      <div className=" md:w-full">
                         <img
                           className="md:h-[32rem] h-auto object-cover rounded-xl"
                           src={item.img}
@@ -321,7 +310,7 @@ const Cars = () => {
                         <h6 className="text-[1rem] md:text-[1.5rem]">
                           {item.model}
                         </h6>
-                        <h5 className="text-[2.6rem]">{item.Rent}/-</h5>
+                        <h5 className="text-[2.6rem] ">{item.Rent}/-</h5>
                         <button className="bg-slate-800 w-28 h-14 rounded-xl">
                           Book Now
                         </button>
@@ -334,22 +323,26 @@ const Cars = () => {
           </div>
         </section>
     
-        <div className="overflow-hidden w-full">
-      <div ref={sliderRef} className="flex flex-row w-auto space-x-6">
-        {slider.map((item, index) => (
-          <div  
-            key={index} 
-            className=" w-[90%] md:w-[30rem] flex-shrink-0 text-center gap-2  bg-gradient-to-b from-black to-gray-950 rounded-xl p-4  font-Rajdhani text-gray-400"
-           
-          >
-            <img className="w-full rounded-lg" src={item.img} alt={item.title} />
-            <h2 className="text-xl font-bold mt-4">{item.title}</h2> {/* h2 element */}
-            <p className="text-base mt-2">{item.star}</p> {/* p element */}
-            <button className="outline w-full h-8 mt-2 rounded-md">BookNow</button>
+        <div className="call-btns mt-[4rem] overflow-hidden ">
+            <h2 className="text-[1.5rem] sm:text-[2.5rem] text-center font-Rajdhani bg-gradient-to-r from-gray-400 to-gray-900 bg-clip-text text-transparent drop-shadow-lg">
+            BOOK YOUR EXPERIENCE
+
+            </h2>
+            <div className=" flex gap-4 mt-[3rem] flex-wrap justify-center">
+              <button className="flex justify-center items-center gap-2  w-[90%] sm:w-[20rem] text-[1rem] sm:text-[1.5rem] font-Rajdhani h-[3rem] rounded-md  bg-gradient-to-r from-blue-600 to-blue-900 drop-shadow-lg">
+                <span>
+                  <MdOutlinePhoneInTalk />
+                </span>
+                Call US
+              </button>
+              <button className="flex justify-center items-center gap-2  w-[90%] sm:w-[20rem] h-[3rem] font-Rajdhani text-[1rem] sm:text-[1.5rem] rounded-md bg-gradient-to-r from-blue-600 to-blue-900 drop-shadow-lg">
+                <span>
+                  <MdOutlineMailOutline />
+                </span>{" "}
+                Email US
+              </button>
+            </div>
           </div>
-        ))}
-      </div>
-    </div>
        
       </div>
     </main>

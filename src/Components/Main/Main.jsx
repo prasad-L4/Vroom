@@ -4,27 +4,43 @@ import { useState, useEffect } from "react";
 import Pages from '../Pages/Pages';
 const Main = () => {
   const [loading, setLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2500);
+    // Simulate loading progress
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev < 100) {
+          return prev + 1;
+        } else {
+          clearInterval(interval);
+          setLoading(false); // Set loading to false when progress reaches 100%
+          return prev;
+        }
+      });
+    }, 50); // Adjust this number for faster/slower progress
 
-    return () => clearTimeout(timer);
+    return () => clearInterval(interval);
   }, []);
   return (
     <>
-<div className="flex justify-center items-center min-h-screen">
-      {loading ? (
-        <div className="flex flex-col justify-center items-center">
-          {/* Loading Spinner */}
-          <div className="w-16 h-16 border-4 border-gray-300 border-t-4 border-t-blue-500 rounded-full animate-spin"></div>
-          <p className="text-gray-500 text-lg mt-4">Loading...</p>
-        </div>
-      ) : (
-    <Pages/>
-      )}
+   <div className="flex justify-center items-center min-h-screen bg-black">
+  {loading ? (
+    <div className="flex flex-col justify-center items-center">
+      {/* Image Placeholder */}
+   
+
+      {/* Progress Percentage */}
+      <p className="text-gray-500 text-lg  text-[10rem] sm:text-[15rem] md:text-[20rem] font-Rajdhani">
+        {progress}%
+      </p>
     </div>
+  ) : (
+    <>
+      <Pages />
+    </>
+  )}
+</div>
     
     </>
   )
