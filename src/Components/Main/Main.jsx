@@ -14,11 +14,11 @@ const Main = () => {
           return prev + 1;
         } else {
           clearInterval(interval);
-          setLoading(false); // Set loading to false when progress reaches 100%
+          setLoading(false); 
           return prev;
         }
       });
-    }, 50); // Adjust this number for faster/slower progress
+    }, 90); 
 
     return () => clearInterval(interval);
   }, []);
