@@ -121,6 +121,10 @@ const Home = () => {
           scrub: 1,
         },
       });
+
+      gsap.set('.splitcard-1', { x: '0%', rotate: 0 });
+gsap.set('.splitcard-2', { x: '0%', rotate: 0 });
+gsap.set('.split-text', { opacity: 0 });
       gsap.to('.splitcard-1',{
         x:'-100%',
         duration: 1.5,
@@ -130,6 +134,7 @@ const Home = () => {
           scrub:1,
           start:'top 10%',
           end:'top -40%',
+          immediateRender: false,
           
         }
       })
@@ -141,7 +146,8 @@ const Home = () => {
           trigger:'.page-main',
           scrub:1,
           start:'top 10%',
-          end:'top -40%'
+          end:'top -40%',
+          immediateRender: false,
         }
       })
       gsap.to('.split-text',{
@@ -155,6 +161,7 @@ const Home = () => {
           end:'top 10%'
         }
       })
+      ScrollTrigger.refresh();
       gsap.to('.page-main',{
        scrollTrigger:{
         trigger:'.page-main',
@@ -305,8 +312,8 @@ const Home = () => {
           <h2 className="testimonial text-center text-white text-[2rem] md:text-[4rem] pt-3 mt-[4rem] sm:mt-8 font-thin">
           Explore!
           </h2>
-             <div className="page-main flex justify-center items-center sm:h-screen ">
-             <div className="relative flex justify-center overflow-hidden items-center w-[100%] mt-[6rem] sm:mt-[3rem]">
+             <div className="page-main  flex justify-center items-center  ">
+             <div className="relative flex justify-center overflow-hidden items-center w-[100%] mt-[rem] sm:mt-[2rem]">
   <div className="flex w-[90%]  justify-center items-center h-[25rem] md:h-screen">
     <img className="splitcard-1 w-[50%] h-[16rem] sm:h-[19rem]  md:h-full object-cover rounded-l-2xl" src="/Assets/images/splitcard-1.jpg" alt="" />
     <img className="splitcard-2 w-[50%] h-[16rem] sm:h-[19rem]  md:h-full  object-cover rounded-r-2xl" src="/Assets/images/splitcard-2.jpg" alt="" />
@@ -314,7 +321,7 @@ const Home = () => {
   
   {/* Text over the image */}
   <div className="split-text absolute inset-0 flex flex-col justify-center items-center  opacity-0 text-center text-white">
-    <h2 className="text-4xl font-bold font-Satisfy bg-gradient-to-r from-blue-400 to-blue-900 bg-clip-text text-transparent  drop-shadow-lg">Drive Your Dream Car Today</h2>
+    <h2 className="md:text-4xl font-bold font-Satisfy bg-gradient-to-r from-blue-400 to-blue-900 bg-clip-text text-transparent  drop-shadow-lg">Drive Your Dream Car Today</h2>
     <p className=" mt-3 font-Satisfy sm:text-[1rem] text-[.7rem]">
       Affordable car rentals for every occasion.<br />
       Whether it’s a weekend getaway or a daily city commute,<br /> we've got you covered.
@@ -325,7 +332,7 @@ const Home = () => {
    
         </section>
 
-        <section className="flex w-[100%] mt-[6rem] justify-center items-center">
+        <section className="flex w-[100%] mt-[2rem] md:mt-[6rem] justify-center items-center">
           <div className="text-white mt-[4rem] flex-wrap lg:flex-nowrap p-5  flex justify-between w-[90%]  items-center bg-gradient-to-b from-black to-gray-900 rounded-xl shadow-lg">
             <div className="lg:w-[30%] bg-">
               <h2 className="text-[2rem] md:text-[3rem]">

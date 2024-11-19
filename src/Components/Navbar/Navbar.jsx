@@ -33,8 +33,8 @@ const Navbar = () => {
 
   return (
     <>
-      <nav  className="bg-black w-full pt-3 h-[5rem] ">
-        <div className="flex justify-between h-[3rem] font-Rajdhani sm:px-0 px-3 sm:justify-around text-white items-center overflow-hidden py-3">
+      <nav  className="bg-black w-full  pt-3 h-[5rem] ">
+        <div className="flex justify-between h-[3rem]  font-Rajdhani sm:px-0 px-3 sm:justify-around text-white items-center overflow-hidden py-3">
           <img
             className="w-[100px] h-[50px]"
             src="/Assets/logo.png"

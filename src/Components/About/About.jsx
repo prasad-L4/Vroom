@@ -1,5 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
 import React from "react";
 import { MdOutlinePhoneInTalk, MdOutlineMailOutline } from "react-icons/md";
 const About = () => {
@@ -23,7 +24,7 @@ const About = () => {
       },
     });
     gsap.to(".vdeosec", {
-      width: window.innerWidth * 0.9,
+      width: '90vw' ,
       height: calculateScale(),
 
       top: 50,
@@ -82,99 +83,221 @@ const About = () => {
         start: "top 80%",
         end: "top 30%",
         scrub: 1,
+        
       },
     });
 
-    gsap.to(".abt-img1", {
-      translateX: "100%",
+    ScrollTrigger.matchMedia({
+      "(max-width: 768px)": () => {
+        gsap.to(".card-swipe", {
+          scrollTrigger: {
+            trigger: ".card-swipe",
+            pin: true,
+            pinSpacing: true,
+            start: "top 0%",
+            end: "top 50%",
+            scrub: 1,
+            scroller: "body",
+            invalidateOnRefresh: true, 
+          },
+        });
 
-      rotate: -30,
-      duration: 1,
-      scale: 0.3,
-      scrollTrigger: {
-        trigger: ".card-swipe",
-        start: "top -10%",
-        end: "top -80%",
-        marker: true,
-        scrub: 1,
-        scroller: "body",
-        pin: true,
+        gsap.to(".abt-img1", {
+          translateX: "100%",
+    
+          rotate: -30,
+          duration: 1,
+          scale: 0.3,
+          scrollTrigger: {
+            trigger: ".card-swipe",
+            start: "top -10%",
+            end: "top -80%",
+            marker: true,
+            scrub: 2,
+            scroller: "body",
+       
+          },
+        });
+    
+        gsap.to(".abt-img2", {
+          translateX: "-90%",
+    
+          translateY: "-35%",
+          rotate: 30,
+          scale: 0.3,
+          duration: 1,
+          scrollTrigger: {
+            trigger: ".card-swipe",
+            start: "top -10%",
+            end: "top -80%",
+            scrub: 2,
+            scroller: "body",
+          },
+        });
+        gsap.to(".abt-img3", {
+          translateX: "-80%",
+    
+          translateY: "45%",
+          rotate: -30,
+          scale: 0.3,
+          duration: 1,
+          scrollTrigger: {
+            trigger: ".card-swipe",
+            start: "top -10%",
+            end: "top -80%",
+            scrub: 2,
+            scroller: "body",
+          },
+        });
+        gsap.to(".abt-img4", {
+          translateY: "-40%",
+          translateX: "80%",
+          rotate: 30,
+          scale: 0.3,
+          duration: 1,
+          scrollTrigger: {
+            trigger: ".card-swipe",
+            start: "top -10%",
+            end: "top -80%",
+            scrub: 2,
+            scroller: "body",
+          },
+        });
+    
+        gsap.to(".abt-img5", {
+          translateX: "70%",
+    
+          translateY: "45%",
+          rotate: -30,
+          scale: 0.3,
+          duration: 1,
+          scrollTrigger: {
+            trigger: ".card-swipe",
+            start: "top -10%",
+            end: "top -80%",
+            scrub: 2,
+            scroller: "body",
+          },
+        });
+        gsap.to(".swiper-card-text", {
+          opacity: 1,
+          delay: 2,
+          scale: 1,
+          duration: 1,
+          scrollTrigger: {
+            trigger: ".card-swipe",
+            start: "top 0%",
+            end: "bottom 0%",
+            scrub: 1,
+            scroller: "body",
+          },
+        });
       },
-    });
-
-    gsap.to(".abt-img2", {
-      translateX: "-90%",
-
-      translateY: "-35%",
-      rotate: 30,
-      scale: 0.3,
-      duration: 1,
-      scrollTrigger: {
-        trigger: ".card-swipe",
-        start: "top -10%",
-        end: "top -80%",
-        scrub: 1,
-        scroller: "body",
-      },
-    });
-    gsap.to(".abt-img3", {
-      translateX: "-80%",
-
-      translateY: "45%",
-      rotate: -30,
-      scale: 0.3,
-      duration: 1,
-      scrollTrigger: {
-        trigger: ".card-swipe",
-        start: "top -10%",
-        end: "top -80%",
-        scrub: 1,
-        scroller: "body",
-      },
-    });
-    gsap.to(".abt-img4", {
-      translateY: "-40%",
-      translateX: "80%",
-      rotate: 30,
-      scale: 0.3,
-      duration: 1,
-      scrollTrigger: {
-        trigger: ".card-swipe",
-        start: "top -10%",
-        end: "top -80%",
-        scrub: 1,
-        scroller: "body",
-      },
-    });
-
-    gsap.to(".abt-img5", {
-      translateX: "70%",
-
-      translateY: "45%",
-      rotate: -30,
-      scale: 0.3,
-      duration: 1,
-      scrollTrigger: {
-        trigger: ".card-swipe",
-        start: "top -10%",
-        end: "top -80%",
-        scrub: 1,
-        scroller: "body",
-      },
-    });
-    gsap.to(".swiper-card-text", {
-      opacity: 1,
-      delay: 2,
-      scale: 1,
-      duration: 1,
-      scrollTrigger: {
-        trigger: ".card-swipe",
-        start: "top -10%",
-        end: "top -80%",
-        scrub: 1,
-        scroller: "body",
-      },
-    });
+      "(min-width: 768px)":()=>{
+        gsap.to(".card-swipe", {
+          scrollTrigger: {
+            trigger: ".card-swipe",
+            pin: true,
+     
+            start: "top -10%", 
+            end: "top -80%", 
+            scrub: 1,
+            scroller: "body",
+          },
+        });
+          gsap.to(".abt-img1", {
+            translateX: "100%",
+      
+            rotate: -30,
+            duration: 1,
+            scale: 0.3,
+            scrollTrigger: {
+              trigger: ".card-swipe",
+              start: "top -10%",
+              end: "top -80%",
+              marker: true,
+              scrub: 2,
+              scroller: "body",
+            
+            },
+          });
+      
+          gsap.to(".abt-img2", {
+            translateX: "-90%",
+      
+            translateY: "-35%",
+            rotate: 30,
+            scale: 0.3,
+            duration: 1,
+            scrollTrigger: {
+              trigger: ".card-swipe",
+              start: "top -10%",
+              end: "top -80%",
+              scrub: 2,   
+              scroller: "body",
+            },
+          });
+          gsap.to(".abt-img3", {
+            translateX: "-80%",
+      
+            translateY: "45%",
+            rotate: -30,
+            scale: 0.3,
+            duration: 1,
+            scrollTrigger: {
+              trigger: ".card-swipe",
+              start: "top -10%",
+              end: "top -80%",
+              scrub: 2,
+              scroller: "body",
+            },
+          });
+          gsap.to(".abt-img4", {
+            translateY: "-40%",
+            translateX: "80%",
+            rotate: 30,
+            scale: 0.3,
+            duration: 1,
+            scrollTrigger: {
+              trigger: ".card-swipe",
+              start: "top -10%",
+              end: "top -80%",
+              scrub: 2,
+              scroller: "body",
+            },
+          });
+      
+          gsap.to(".abt-img5", {
+            translateX: "70%",
+      
+            translateY: "45%",
+            rotate: -30,
+            scale: 0.3,
+            duration: 1,
+            scrollTrigger: {
+              trigger: ".card-swipe",
+              start: "top -10%",
+              end: "top -80%",
+              scrub: 2,
+              scroller: "body",
+            },
+          });
+          gsap.to(".swiper-card-text", {
+            opacity: 1,
+            delay: 2,
+            scale: 1,
+            duration: 1,
+            scrollTrigger: {
+              trigger: ".card-swipe",
+              start: "top -10%",
+              end: "top -80%",
+              scrub: 1,
+              scroller: "body",
+            },
+          });
+      }
+    })
+  
     gsap.from(".cntct-sec", {
       y: 150,
       duration: 1,
@@ -239,12 +362,12 @@ const About = () => {
   ];
   return (
     <>
-      <main style={{ overflow: "hidden" }} className="bg-black  ">
+      <main style={{ overflow: "hidden" }} className="bg-black ">
         <div className="title-sec w-[100%]  overflow-hidden  flex justify-center items-center">
-          <div className="titile-main w-[90%] overflow-hidden md:h-[30rem] lg:h-[40rem]    mt-5">
+          <div className="titile-main w-[90%] overflow-hidden overflow-x-hidden md:h-[30rem] lg:h-[40rem]    mt-5">
             <h2 className=" flex flex-col gap-3  text-gray-400 items-center text-[1.6rem] md:text-[2rem] lg:text-[3rem] font-Rajdhani font-bold">
               Discover Our Story:A <br />{" "}
-              <div className="vdeosec  bg-white z-50 w-[10rem] md:w-[12rem] flex justify-center  items-center h-[6rem] pt-3  relative text-black rounded-xl p-2">
+              <div className="vdeosec  bg-white z-50 w-[10rem] md:w-[12rem] overflow-hidden flex justify-center  items-center h-[6rem] pt-3  relative text-black rounded-xl p-2">
                 {" "}
                 <h3 className=" title-text  text-center"> Video</h3>{" "}
                 <video
@@ -329,7 +452,7 @@ const About = () => {
             />
           </div>
         </section>
-        <div className="w-[100%] card-swipe  overflow-x-hidden flex  justify-center items-center">
+        <div className="w-[100%] card-swipe  overflow-x-hidden flex  justify-center items-center h-screen">
    
           <div
          
@@ -405,8 +528,8 @@ const About = () => {
         </div>
 
         <div>
-          <div>
-            <div className="testi flex justify-center overflow-hidden flex-wrap sm:mt-[6rem]  gap-5 w-[100%] ">
+          <div className="flex justify-center">
+            <div className="testi flex justify-center items-center overflow-hidden flex-wrap sm:mt-[6rem]  gap-5 w-[90%] md:w-[100%] ">
               {testimonialdatas.map((item, index) => (
                 <div
                   key={index}
