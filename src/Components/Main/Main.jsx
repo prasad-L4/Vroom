@@ -18,7 +18,7 @@ const Main = () => {
           return prev;
         }
       });
-    }, 0); 
+    }, 80); 
 
     return () => clearInterval(interval);
   }, []);
