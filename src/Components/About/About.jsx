@@ -375,7 +375,7 @@ const About = () => {
                   loop
                   muted
                   className="video absolute h-[15rem] lg:w-full md:h-[20rem] rounded-xl  lg:h-full right-[10%] opacity-0 md:top-[-4rem] lg:top-0 left-[.3%] z-99"
-                  //   style={{ transform: `scale(${videoScale})` }}
+                  //   style={{ transform: scale(${videoScale}) }}
                 >
                   <source src="/Assets/video/abt.mp4" type="video/mp4" />
                 </video>
